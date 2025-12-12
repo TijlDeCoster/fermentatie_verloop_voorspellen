@@ -25,35 +25,42 @@ Hoe kan een machine-learningmodel ontwikkeld worden dat fermentatiegedrag en kwa
 Het doel van dit onderzoek is het ontwikkelen van een reproduceerbaar Python-model dat fermentatie en kwaliteitsparameters kan voorspellen, aangevuld met een prototype-dashboard voor datagedreven monitoring. Het concrete resultaat is een proof-of-concept dat toegepast kan worden binnen een traditionele lambiekbrouwerij.
 
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+% \begin{itemize}
+%   \item kaderen thema
+%   \item de doelgroep
+%   \item de probleemstelling en (centrale) onderzoeksvraag
+%   \item de onderzoeksdoelstelling
+% \end{itemize}
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+% Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
+% De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
 
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
+% Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
 
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+% Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+Het brouwen van lambiekbieren onderscheidt zich door een uniek spontaan fermentatieproces waarbij het wort niet wordt geïnocullerd met een specifieke gistcultuur maar word blootgesteld aan micro-organismen uit de lucht en de houten vaten \autocite{BoonSpontaneous2025,EylenboschSpontaneous2025}. Deze spontane gisting zorgt voor een rijke microbiële diversiteit die de smaak en de zuurtegraad van het bier sterk beïnvloeden. De aanwezigheid van azijnzuurbacteriën en andere micro-organismen in de vaten is niet uniform maar varieert zowel in tijd als in ruimte wat bijdraagt aan de dynamische aar van het fermentatieproces en de unieke kenmerken van elke batch \autocite{DeRoosVerceAertsVandammeDeVuyst2018}.
+Door deze natuurlijke variabiliteit is het voorspellen van het exacte fermentatie verloop complex. Traditionele wiskundige modellen bieden een basis maar zijn kunnen beperkt omgaan met niet lineaire interacties tussen micro-organismen, omgevingsfactoren en vatvariateit. Black-box-model zoals neurale netwerken  blijken effectiever in het herkennen van patronen in historische data en het voorspellen van fermentatie parameters zoals suikerafbraak en zuurtegraad \autocite{TreleaTiticaLandaudLatrilleCorrieu2001}.
+De recente opkomst van machine learning in het brouwproces bied extra mogelijkheden aan om deze complexiteit te beheersen. Door historische en real time data te combineren kunnen algoritmes zoals random forrest, gradiant boosting en deep learning trends kwaliteitsafwijkingen detecteren en procesoptimalizatie voorstellen \autocite{Nettesheim2024}. Deze benadering maakt het mogelijk om vroegtijdig inzicht te krijgen in de mogelijke aromas in de lambiek.
+Sammengevat benadrukt de literatuur dat een combinatie van diepgaand microbiologische inzichten en moderne machine-learningmodellen essentieel is om spontane fermentaties in lambiekbrouwerijen te begrijpen en monitoren. Deze geïntegreerde aanpak stelt brouwers in staat om kwaliteitsconsistentie te verhogen en vroegtijdig inzicht krijgen in de aromas terwijl de ambachtelijke eigenschappen van lambiekbieren te behouden \autocite{Bokulich2014,DeRoosVerceAertsVandammeDeVuyst2018,TreleaTiticaLandaudLatrilleCorrieu2001,Nettesheim2024,BoonSpontaneous2025,EylenboschSpontaneous2025}
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+% Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+% Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+
+% Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+
+% Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+
+% Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
 % \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
@@ -68,25 +75,79 @@ Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur v
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+De methodologie van dit onderzoek volgt de experimentele aanpak. Het doel is om te onderzoeken in welke maten machine-learningmodellen in staat zijn om patronen te vinden in spontane lambiekfermentatieprocessen en of deze modelen een bruikbaar inzicht kunnen geven voor kwaliteitsoptimalizatie.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+\subsection{Onderzoeksopzet}
+Het onderzoek word uitgevoerd in vier hoofdfasen: literatuurstudie, dataverwerking, modelering en evaluatie, gevolgd door een beslissingsfase waarin bepaald word of de proof-of-concept-dashboard ontwikkeld word of dat alternatieve AI-methoden onderzocht worden.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+\subsection{Dataverzameling en -voorbereiding}
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+De beschikbare datasets uit traditionele lambiekbrouwerijen worden verzamelt, opgeschoond en voorbereid voor analyse. Dit omvat het behandelen van ontbrekende waarden, het verwijderen van ruis en feature engineering om relevante variabelen zoals temperatuur, pH , dichtheid en microbiële indicatoren geschikt te maken voor machinelearning. De dataset word opgesplitst in training-, evaluatie- en testsets volgens gangbare best practices.
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
+\subsection*{Modelering}
+Verschillende machinelearningmodellen worden ontwikkeld, waaronder:
+\begin{itemize}
+  \item  Basisline-modellen zoals lineaire regression
+  \item  Ensamble-modellen zoals Random Forrest en XGBoost
+\end{itemize}
 
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+Hyperparameters worden geoptimaliseerd en de prestaties van elk model worden geëvalueerd aan de hand van metrics zoals RMSE en MAE.
+
+\subsection*{Evaluatie en beslissingsmoment}
+De modellen worden vergeleeken op nauwkeurigheid, stabiliteit en reproduceerbaarheid. Afhaneklijk van de resultaten word volgende beslissing gemaakt.
+\begin{itemize}
+  \item \textbf{Scenario A: modellen zijn voldoende vertroubaar.} In dit geval wordt een PoC-dashboard ontwikkeld om voorspellingen en trends toegankelijk te maken voor de brouwer.
+  \item  \textbf{Scenario B= modellen zijn niet voldoende vertroubaar.} Er word geen PoC-dashboard ontwikkeld. Inplaats daarvan worden alternatieve AI-methoden onderzocht zoals neurale netwerekn of unsupervised learningtechnieken om verborgen patronen te detecteren.
+\end{itemize}
+
+\subsection*{Tools en technologieën}
+Voor dit onderzoek worden onder andere de volgende tools gebruikt:
+\begin{itemize}
+    \item Python (NumPy, Pandas, Scikit-learn, Matplotlib, eventueel TensorFlow of PyTorch)
+    \item Jupyter Notebooks voor experimenten en documentatie
+    \item Git voor versiebeheer
+\end{itemize}
+
+\subsection*{Tijdsplanning en deliverables (13 weken)}
+\begin{itemize}
+  \item \textbf{Week 1--2:} Literatuurstudie en afbakening van het probleem. \emph{Deliverable: literatuurhoofdstuk en onderzoeksvragen.}
+  \item \textbf{Week 3:} Verzameling en eerste verkenning van de dataset. \emph{Deliverable: eerste EDA-notebook.}
+  \item \textbf{Week 4--5:} Datapreprocessing en feature engineering. \emph{Deliverable: opgeschoonde dataset en preprocessing-scripts.}
+  \item \textbf{Week 6--7:} Ontwikkeling van baseline en klassieke ML-modellen. \emph{Deliverable: modelresultaten.}
+  \item \textbf{Week 8:} Hyperparameter-tuning en testen van geavanceerde modellen. \emph{Deliverable: geoptimaliseerde modellen.}
+  \item \textbf{Week 9:} Evaluatie van modellen en beslissingsmoment. \emph{Deliverable: evaluatierapport.}
+  \item \textbf{Week 10--12:} Scenario-afhankelijke actie: dashboardontwikkeling of AI-vervolgonderzoek. \emph{Deliverable: PoC-dashboard of AI-experimentrapport.}
+  \item \textbf{Week 13:} Eindredactie en afronding van de bachelorproef. \emph{Deliverable: finale tekst en bijlagen.}
+\end{itemize}
+
+Deze methodologie zorgt dat het onderzoek zewel technisch diepgaand is als objecteif meetbaar is en dat de resultaten reproduceerbaar en wetenschappelijk verantwoor is.
+
+
+% Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+
+% Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+
+% Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+
+% Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+
+% Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
+
+% Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+Het verwachte resultaat is een proof-of-concept machinelearningmodellen dat fermentieparameters van lambiekbieren kan voorspellen op basis van historische en real time data.
+Indine de voorspelling betrouwbaar zijn (\textbf{Scenario A}) wordt er een eenvoudig dashboard ontwikkeld waarin trends en voorspellingen van bevoorbeeld pH , dichtheid en alcoholpercentage per batch word weergegeven. Als de modellen onvoldoende betrouwbaar zijn (\textbf{Scenario b}) wordt onderzocht of geavanceerde AI-technieken zoals neurale netwerken of unsupervised learning verborgen patronen kunnen detecteren.
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
+De meerwaarde voor traditionele lambiekbrouwerijen ligt in het vroegtijdig opsporen van afwijkingen het beter monitoren van fermentatieproces en de smaak aromas kunnen voorspellen zonder te proeven zonder de ambachtelijke karakters aantepassen.
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+Verwachte conclusie zijn dat machinelearning modelen een deel van de variabiliteit in spontane fermentatie kunnen voorspellen en dat klassieke modelen mogelijks voldoende zijn voor een dashboard terwijl complecere  AI-benaderingen aanvullende inzichten kunnen bieden bij grotere variabiliteit.
+% Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+
+% Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
+
+% Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
 
