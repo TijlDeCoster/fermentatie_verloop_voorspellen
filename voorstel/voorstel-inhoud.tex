@@ -12,18 +12,34 @@
 % uitgewerkt (met medesturent VOORNAAM NAAM als mede-auteur).
 % 
 
-\section{Inleiding}%
+\section{Inleiding}
 \label{sec:inleiding}
-
-Deze bachelorproef richt zich op de toepassing van machine learning voor de voorspelling en monitoring van fermentatieproces in traditionele lambiekbrouwerijen. Het thema combineert  traditionele ambachtelijke productie met moderne data-analyse technieken en richt zich specifiek op **brouwers die lambiek produceren** in het Pajottenland en Zennevalei.
-De centrale probleemstelling is dat spontane gisting leid tot een hoge variabiliteit tussen batchen en vaten waardoor kwaliteitsconsistentie en voorspelbaarheid van het productieproces beperkt zijn. Hoewel veel brouwerijen proces- en sensorische data heeft word die zelden benut om voorspelling mee uit te voeren.
+Deze bachelorproef richt zich op de toepassing van machine learning voor de voorspellen van smaakprofiel en monitoring van fermentatieproces in traditionele lambiekbrouwerijen. Het thema combineert  traditionele ambachtelijke productie met moderne data-analysetechnieken en richt zich specifiek op \textbf{brouwers die lambiek produceren} in het Pajottenland en de Zennevalei.
+De centrale probleemstelling is dat spontane gisting leidt tot een hoge variabiliteit tussen batchen en vaten, waardoor kwaliteitsconsistentie en voorspelbaarheid van het productieproces beperkt zijn. Hoewel veel brouwerijen proces- en sensorische data verzamelen wordt die zelden benut om voorspelling mee uit te voeren.
 
 \paragraph{Centrale onderzoeksvraag}
-Hoe kan een machine-learningmodel ontwikkeld worden dat fermentatiegedrag en kwaliteitsindicatoren van lambiek voorspelt, zodat traditionele brouwerijen hun productieproces beter kunnen sturen en de kwaliteit van het eindproduct kunnen waarborgen?
+{\color{purple}Hoe kan een machine-learningmodel ontwikkeld worden dat fermentatiegedrag en kwaliteitsindicatoren van lambiek voorspelt, zodat traditionele brouwerijen hun productieproces beter kunnen sturen en de kwaliteit van het eindproduct kunnen waarborgen?}
 
 \paragraph{Onderzoeksdoelstelling}
-Het doel van dit onderzoek is het ontwikkelen van een reproduceerbaar Python-model dat fermentatie en kwaliteitsparameters kan voorspellen, aangevuld met een prototype-dashboard voor datagedreven monitoring. Het concrete resultaat is een proof-of-concept dat toegepast kan worden binnen een traditionele lambiekbrouwerij.
+Het doel van dit onderzoek is het ontwikkelen van een reproduceerbaar Python-model dat fermentatie en kwaliteitsparameters kan voorspellen op basis van historische en real-time data. Wanneer deze modellen nauwkeurig en stabiel blijken (\textbf{Scenario A}) wordt het model aangevuld met een prototype-dashboard dat datagedreven monitoring voor brouwers ondersteunt. Indien de voorspellingen onvoldoende betrouwbaar zijn (\textbf{Scenario B}) verschuift de focus op het onderzoek naar alternatieve AI-technieken (zoals neurale netwerken of unsupervised learning) om de onderliggende variabiliteit en patronen in spontane gisting beter te begrijpen. In beide scenario\textquotesingle s is het doel een proof-of-concept op te leveren dat bruikbare inzichten biedt voor traditionele lambiekbrouwerijen.
 
+\paragraph{Deelvragen probleemdomein}
+{\color{purple}
+\begin{itemize}
+  \item Welke factoren (microbiële populaties, vatvariatie, temperatuur, luchtkwaliteit) beïnvloeden de variabiliteit in spontane lambiekfermentatie het meeste?
+  \item Welke fermentatieparameters (pH, suikerafbraak, alcoholpercentage, aromaprofiel) zijn essentieel voor het voorspellen van kwaliteit en smaak?
+  \item Welke datakwaliteitsproblemen (ontbrekende waarden, inconsistenties tussen batches of vaten) kunnen de prestaties van ML-modellen beïnvloeden?
+  \item Welke bestaande kennis of modellen zijn er over fermentatei en lambiekproductie en wat zijn hun beperkingen voor het voorspellende doeleinden?
+\end{itemize}}
+
+\paragraph{Deelvragen oplossingsdomein}
+{\color{purple}
+\begin{itemize}
+  \item Welke machine-learningmodellen (bijv. lineaire regressie, Random Forest, XGBoost) presteren het best bij het voorspellen van fermentatieparameters en smaakprofielen?
+  \item Welke feature-engineeringsstrategieën (tijdvensters, aggregatie, trenddetectie) verhogen de voorspellende waarde van het model?
+  \item Hoe kan het model gevaldeerd worden op onafhankelijke batches of tijdreeksen om reproduceerbaarheid en generaliserbaarheid te waarborgen?
+  \item Welke alternatieve AI-technieken (unsupervised learning, anomaly detection) kunnen ingezet worden wanneer klassieke ML-modellen onvoldoende presteren?
+\end{itemize}}
 
 % \begin{itemize}
 %   \item kaderen thema
@@ -44,11 +60,13 @@ Het doel van dit onderzoek is het ontwikkelen van een reproduceerbaar Python-mod
 
 \section{Literatuurstudie}%
 \label{sec:literatuurstudie}
+Het brouwen van lambiekbieren onderscheidt zich door een uniek spontaan fermentatieproces, waarbij het wort niet wordt geïnoculeerd met een specifieke gistcultuur, maar wordt blootgesteld aan micro-organismen uit de lucht en de houten vaten \autocite{BoonSpontaneous2025,EylenboschSpontaneous2025}. Deze spontane gisting zorgt voor een rijke microbiële diversiteit die de smaak en de zuurtegraad van het bier sterk beïnvloeden. De aanwezigheid van azijnzuurbacteriën en andere micro-organismen in de vaten is niet uniform, maar varieert zowel in tijd als in ruimte, wat bijdraagt aan de dynamische aard van het fermentatieproces en de unieke kenmerken van elke batch \autocite{DeRoosVerceAertsVandammeDeVuyst2018}.
 
-Het brouwen van lambiekbieren onderscheidt zich door een uniek spontaan fermentatieproces waarbij het wort niet wordt geïnocullerd met een specifieke gistcultuur maar word blootgesteld aan micro-organismen uit de lucht en de houten vaten \autocite{BoonSpontaneous2025,EylenboschSpontaneous2025}. Deze spontane gisting zorgt voor een rijke microbiële diversiteit die de smaak en de zuurtegraad van het bier sterk beïnvloeden. De aanwezigheid van azijnzuurbacteriën en andere micro-organismen in de vaten is niet uniform maar varieert zowel in tijd als in ruimte wat bijdraagt aan de dynamische aar van het fermentatieproces en de unieke kenmerken van elke batch \autocite{DeRoosVerceAertsVandammeDeVuyst2018}.
-Door deze natuurlijke variabiliteit is het voorspellen van het exacte fermentatie verloop complex. Traditionele wiskundige modellen bieden een basis maar zijn kunnen beperkt omgaan met niet lineaire interacties tussen micro-organismen, omgevingsfactoren en vatvariateit. Black-box-model zoals neurale netwerken  blijken effectiever in het herkennen van patronen in historische data en het voorspellen van fermentatie parameters zoals suikerafbraak en zuurtegraad \autocite{TreleaTiticaLandaudLatrilleCorrieu2001}.
-De recente opkomst van machine learning in het brouwproces bied extra mogelijkheden aan om deze complexiteit te beheersen. Door historische en real time data te combineren kunnen algoritmes zoals random forrest, gradiant boosting en deep learning trends kwaliteitsafwijkingen detecteren en procesoptimalizatie voorstellen \autocite{Nettesheim2024}. Deze benadering maakt het mogelijk om vroegtijdig inzicht te krijgen in de mogelijke aromas in de lambiek.
-Sammengevat benadrukt de literatuur dat een combinatie van diepgaand microbiologische inzichten en moderne machine-learningmodellen essentieel is om spontane fermentaties in lambiekbrouwerijen te begrijpen en monitoren. Deze geïntegreerde aanpak stelt brouwers in staat om kwaliteitsconsistentie te verhogen en vroegtijdig inzicht krijgen in de aromas terwijl de ambachtelijke eigenschappen van lambiekbieren te behouden \autocite{Bokulich2014,DeRoosVerceAertsVandammeDeVuyst2018,TreleaTiticaLandaudLatrilleCorrieu2001,Nettesheim2024,BoonSpontaneous2025,EylenboschSpontaneous2025}
+Door deze natuurlijke variabiliteit is het voorspellen van het exacte fermentatieverloop complex. Traditionele wiskundige modellen bieden een basis, maar zij kunnen beperkt omgaan met niet-lineaire interacties tussen micro-organismen, omgevingsfactoren en vatvariëteit. Black-boxmodel zoals neurale netwerken  blijken effectiever in het herkennen van patronen in historische data en het voorspellen van fermentatieparameters zoals suikerafbraak en zuurtegraad \autocite{TreleaTiticaLandaudLatrilleCorrieu2001}.
+
+De recente opkomst van machine learning in het brouwproces biedt extra mogelijkheden aan om deze complexiteit te beheersen. Door historische en real-time data te combineren, kunnen algoritmes zoals random forrest, gradiant boosting en deep learning trends kwaliteitsafwijkingen detecteren en procesoptimalisatie voorstellen \autocite{Nettesheim2024}. Deze benadering maakt het mogelijk om vroegtijdig inzicht te krijgen in de mogelijke aroma\textquotesingle s in de lambiek.
+
+Samengevat benadrukt de literatuur dat een combinatie van diepgaande microbiologische inzichten en moderne machine-learningmodellen essentieel is om spontane gisting in lambiekbrouwerijen te begrijpen en te monitoren. Deze geïntegreerde aanpak stelt brouwers in staat om kwaliteitsconsistentie te verhogen en vroegtijdig inzicht te krijgen in de aroma\textquotesingle s terwijl de ambachtelijke eigenschappen van lambiekbieren te behouden \autocite{Bokulich2014,DeRoosVerceAertsVandammeDeVuyst2018,TreleaTiticaLandaudLatrilleCorrieu2001,Nettesheim2024,BoonSpontaneous2025,EylenboschSpontaneous2025}
 
 
 
@@ -69,35 +87,41 @@ Sammengevat benadrukt de literatuur dat een combinatie van diepgaand microbiolog
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
 %   ...'')
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+% Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
+De methodologie van dit onderzoek volgt de experimentele aanpak. Het doel is om te onderzoeken in welke mate machine-learningmodellen in staat zijn om patronen te vinden in spontane lambiekfermentatieprocessen en of deze modelen een bruikbaar inzicht kunnen geven voor kwaliteitsoptimalizatie.
 
-De methodologie van dit onderzoek volgt de experimentele aanpak. Het doel is om te onderzoeken in welke maten machine-learningmodellen in staat zijn om patronen te vinden in spontane lambiekfermentatieprocessen en of deze modelen een bruikbaar inzicht kunnen geven voor kwaliteitsoptimalizatie.
+\subsection*{Onderzoeksopzet}
+Het onderzoek wordt uitgevoerd in vier hoofdfasen: literatuurstudie, dataverwerking, modellering en evaluatie, gevolgd door een beslissingsfase waarin bepaald wordt of de proof-of-concept-dashboard ontwikkeld wordt of dat alternatieve AI-methoden onderzocht worden.
 
-\subsection{Onderzoeksopzet}
-Het onderzoek word uitgevoerd in vier hoofdfasen: literatuurstudie, dataverwerking, modelering en evaluatie, gevolgd door een beslissingsfase waarin bepaald word of de proof-of-concept-dashboard ontwikkeld word of dat alternatieve AI-methoden onderzocht worden.
+\subsection*{Dataverzameling en -voorbereiding}
+De beschikbare datasets uit traditionele lambiekbrouwerijen worden verzameld, opgeschoond en voorbereid voor analyse. Dit omvat het behandelen van ontbrekende waarden, het verwijderen van ruis en feature engineering om relevante variabelen zoals temperatuur, pH , dichtheid en microbiële indicatoren geschikt te maken voor machine learning. De dataset wordt opgesplitst in training-, evaluatie- en testsets volgens gangbare best practices.
 
-\subsection{Dataverzameling en -voorbereiding}
-
-De beschikbare datasets uit traditionele lambiekbrouwerijen worden verzamelt, opgeschoond en voorbereid voor analyse. Dit omvat het behandelen van ontbrekende waarden, het verwijderen van ruis en feature engineering om relevante variabelen zoals temperatuur, pH , dichtheid en microbiële indicatoren geschikt te maken voor machinelearning. De dataset word opgesplitst in training-, evaluatie- en testsets volgens gangbare best practices.
-
-\subsection*{Modelering}
-Verschillende machinelearningmodellen worden ontwikkeld, waaronder:
+\subsection*{Modellering}
+Verschillende machine learningmodellen worden ontwikkeld, waaronder:
 \begin{itemize}
-  \item  Basisline-modellen zoals lineaire regression
-  \item  Ensamble-modellen zoals Random Forrest en XGBoost
+  \item  Basisline-modellen zoals lineaire regressie
+  \item  Ensemble-modellen zoals Random Forrest en XGBoost
 \end{itemize}
 
 Hyperparameters worden geoptimaliseerd en de prestaties van elk model worden geëvalueerd aan de hand van metrics zoals RMSE en MAE.
 
 \subsection*{Evaluatie en beslissingsmoment}
-De modellen worden vergeleeken op nauwkeurigheid, stabiliteit en reproduceerbaarheid. Afhaneklijk van de resultaten word volgende beslissing gemaakt.
+De modellen worden vergeleken op nauwkeurigheid, stabiliteit en reproduceerbaarheid. Afhankelijk van de resultaten wordt volgende beslissing gemaakt.
 \begin{itemize}
-  \item \textbf{Scenario A: modellen zijn voldoende vertroubaar.} In dit geval wordt een PoC-dashboard ontwikkeld om voorspellingen en trends toegankelijk te maken voor de brouwer.
-  \item  \textbf{Scenario B= modellen zijn niet voldoende vertroubaar.} Er word geen PoC-dashboard ontwikkeld. Inplaats daarvan worden alternatieve AI-methoden onderzocht zoals neurale netwerekn of unsupervised learningtechnieken om verborgen patronen te detecteren.
+  \item \textbf{Scenario A: modellen zijn voldoende vertrouwbaar.} In dit geval wordt een PoC-dashboard ontwikkeld om voorspellingen en trends toegankelijk te maken voor de brouwer.
+  \item  \textbf{Scenario B: modellen zijn niet voldoende vertrouwbaar.} Indien klassieke machine-learningmodellen niet in staat blijken om fermentatieparameters met voldoende nauwkeurigheid te voorspellen wordt geen dashboard ontwikkeld. In plaats daarvan verschuift de focus naar het onderzoeken van alternatieve AI-technieken die beter geschikt zijn voor complexe niet-lineaire en variabele tijdsreeksen.
+          In dit scenario worden onder meer de volgende pistes onderzocht:
+          \begin{itemize}
+          \item \textbf{Neurale netwerken} voor het modelleren van niet-lineaire tijdsreeksen.
+          \item \textbf{Unsupervised learning} om verborgen patronen, variatie of microbiële fases te identificeren zonder labels.
+          \item \textbf{Anomaly detection-modellen} om fermentatieafwijkingen vroegtijdig te detecteren.
+          \end{itemize}
+          Het eindresultaat van Scenario B is een vergelijkend onderzoek waarin duidelijk wordt waarom klassieke ML-methoden tekortschieten en welke AI-technieken potentieel beter geschikt zijn voor spontane lambiekfermentatie.
+        
 \end{itemize}
 
 \subsection*{Tools en technologieën}
@@ -120,7 +144,7 @@ Voor dit onderzoek worden onder andere de volgende tools gebruikt:
   \item \textbf{Week 13:} Eindredactie en afronding van de bachelorproef. \emph{Deliverable: finale tekst en bijlagen.}
 \end{itemize}
 
-Deze methodologie zorgt dat het onderzoek zewel technisch diepgaand is als objecteif meetbaar is en dat de resultaten reproduceerbaar en wetenschappelijk verantwoor is.
+Deze methodologie zorgt ervoor dat het onderzoek zowel technisch diepgaand is als objectief meetbaar is en dat de resultaten reproduceerbaar en wetenschappelijk verantwoord is.
 
 
 % Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
@@ -138,13 +162,12 @@ Deze methodologie zorgt dat het onderzoek zewel technisch diepgaand is als objec
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
+Het verwachte resultaat is een proof-of-concept machinelearningmodellen dat fermentieparameters van lambiekbieren kan voorspellen op basis van historische en real-time data.
+Indien de voorspelling betrouwbaar zijn (\textbf{Scenario A}) wordt er een eenvoudig dashboard ontwikkeld waarin trends en voorspellingen van bijvoorbeeld pH , dichtheid en alcoholpercentage per batch wordt weergegeven. Als de modellen onvoldoende betrouwbaar zijn (\textbf{Scenario B}) wordt onderzocht of geavanceerde AI-technieken zoals neurale netwerken of unsupervised learning verborgen patronen kunnen detecteren.
 
-Het verwachte resultaat is een proof-of-concept machinelearningmodellen dat fermentieparameters van lambiekbieren kan voorspellen op basis van historische en real time data.
-Indine de voorspelling betrouwbaar zijn (\textbf{Scenario A}) wordt er een eenvoudig dashboard ontwikkeld waarin trends en voorspellingen van bevoorbeeld pH , dichtheid en alcoholpercentage per batch word weergegeven. Als de modellen onvoldoende betrouwbaar zijn (\textbf{Scenario b}) wordt onderzocht of geavanceerde AI-technieken zoals neurale netwerken of unsupervised learning verborgen patronen kunnen detecteren.
+De meerwaarde voor traditionele lambiekbrouwerijen ligt in het vroegtijdig opsporen van afwijkingen het beter monitoren van fermentatieproces en de smaak aroma\textquotesingle s kunnen voorspellen zonder te proeven zonder de ambachtelijke karakters aan te passen.
 
-De meerwaarde voor traditionele lambiekbrouwerijen ligt in het vroegtijdig opsporen van afwijkingen het beter monitoren van fermentatieproces en de smaak aromas kunnen voorspellen zonder te proeven zonder de ambachtelijke karakters aantepassen.
-
-Verwachte conclusie zijn dat machinelearning modelen een deel van de variabiliteit in spontane fermentatie kunnen voorspellen en dat klassieke modelen mogelijks voldoende zijn voor een dashboard terwijl complecere  AI-benaderingen aanvullende inzichten kunnen bieden bij grotere variabiliteit.
+De verwachte conclusies zijn dat machine learning modellen een deel van de variabiliteit in spontane gisting kunnen voorspellen en dat klassieke modelen mogelijk onvoldoende zijn voor een dashboard, terwijl complexere AI-benaderingen aanvullende inzichten kunnen bieden bij grotere variabiliteit.
 % Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
 
 % Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?

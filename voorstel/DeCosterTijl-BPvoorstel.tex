@@ -7,7 +7,7 @@
 % Voor een voorstel in het Engels: voeg de documentclass-optie [english] toe.
 % Let op: kan enkel na toestemming van de bachelorproefcoördinator!
 \documentclass{hogent-article}
-
+\usepackage{xcolor}
 % Invoegen bibliografiebestand
 \addbibresource{voorstel.bib}
 
@@ -37,6 +37,7 @@
 
 % TODO: Geef de co-promotor op
 \supervisor[Co-promotor]{(, \href{mailto:}{})}
+\projectrepo{https://github.com/TijlDeCoster/fermentatie_verloop_voorspellen}
 
 % Binnen welke specialisatierichting uit 3TI situeert dit onderzoek zich?
 % Kies uit deze lijst:
@@ -54,8 +55,16 @@
 
 \begin{document}
 
+
 \begin{abstract}
-  Traditionele lambiek- en geuzebrouwerijen werken met een uniek spontaan fermentatieproces dat sterk afhankelijk is van de omgevingstemperatuur, microbiële activiteit en vatvariaties. Deze natuurlijke variabiliteit maakt de productie minder voorspelbaar en kan leiden tot inconsistentie in kwaliteit, fermentatietijd of aromaprofiel. Hoewel steeds meer brouwerijen proces- en sensorische data verzamelen, worden deze gegevens nog zelden systematisch geanalyseerd met moderne datamodellen. Dit onderzoek richt zich op het ontwikkelen van een machine-learningmodel in Python dat fermentatie- en kwaliteitsindicatoren van lambiek voorspellen op basis van historische en real-time gegevens. Doel van het onderzoek is een model te ontwerpen dat afwijkingen vroegtijdig detecteert en kwaliteitsconsistentie verhoogt zonder het ambachtelijke karakter te verliezen. De methodologie omvat literatuurstudie, dataverkening, feature engineering op tijdsreeksen, experimenten met verschillende ML-algoritmen (o.a. Random Forest, XGBoost,...) en validatie op gescheiden batches. Verwachte resultaten zijn een bruikbaar voorspellend model dat klaar is om geintregeerd te worden voor een dashboard. Dit onderzoek biedt meerwaarde door traditionele brouwerijambacht te verbinden met moderne datatechniken en creëert zo een toekomstgericht kader voor kwaliteitsoptimalisatie binnen de lambieksector.  
+{\color{purple}Traditionele lambiekbrouwerijen werken met spontane gisting die sterk afhankelijk is van micro-organismen uit de lucht, houten vaten en omgevingsfactoren. Deze variabiliteit maakt het moeilijk om de kwaliteit, het verloop van de fermentatie en het smaakprofiel te voorspellen. Hoewel veel brouwerijen proces- en sensorische data verzamelen wordt deze data  zelden systematisch geanalyseerd met moderne datamodellen.}
+Hieruit volgt de onderzoeksvraag:{\color{purple} hoe kan een machinelearningmodel ontwikkeld worden dat fermentatiegedrag en kwaliteitsindicatoren van lambiekvoorspelt, zodat traditionele brouwerijen hun productieproces beter kunnen sturen en de kwaliteit van het eindproduct kunnen waarborgen?}
+De methodologie omvat literatuurstudie, dataverzameling en datavoorbereiding, feature engineering, ontwikkeling en evaluatie van verschillende machine-learningmodellen (zoals lineaire regressie, Random Forest en XGBoost) en een beslissingsmoment waarin twee scenario’s worden onderzocht:
+\begin{itemize}
+  \item \textbf{Scenario A}: de modellen zijn nauwkeurig en stabiel, waarna een prototype-dashboard wordt ontwikkeld om voorspellingen en trends toegankelijk te maken.
+  \item \textbf{Scenario B}: de modellen zijn onvoldoende; in dit geval wordt het onderzoek gericht op alternatieve AI-technieken zoals neurale netwerken en unsupervised learning om verborgen patronen en variabiliteit te voorspellen.
+\end{itemize}
+Het verwachte resultaat is een proof-of-concept dat inzicht biedt in fermentatiegedrag, afwijkingen en vroegtijdig kan signaleren en bijdraagt aan een betere voorspelling van smaakprofielen. De meerwaarde voor traditionele lambiekbrouwerijen ligt in het combineren van het ambacht met moderne data-analyse voor kwaliteitsoptimalisatie.
 \end{abstract}
 
 \tableofcontents
